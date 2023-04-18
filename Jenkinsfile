@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Run tests admin') {
             steps {
-                sh 'npm test test/setup-teardown.js'
+                sh 'npm test'
             }
         }    
 
