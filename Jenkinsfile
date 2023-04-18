@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Run tests admin') {
             steps {
-                sh 'npm test test/calculator-done.test.js'
+                sh 'npm test '
             }
         }    
 
