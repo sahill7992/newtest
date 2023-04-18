@@ -1,20 +1,20 @@
 const { add, subtract, multiply } = require('../calculator');
 
-beforeAll(() => {
-    console.log("Before all Tests")
-})
+// beforeAll(() => {
+//     console.log("Before all Tests")
+// })
 
-beforeEach(() => {
-    console.log("Before each Test")
-})
+// beforeEach(() => {
+//     console.log("Before each Test")
+// })
 
-afterEach(() => {
-    console.log("After each Test")
-})
+// afterEach(() => {
+//     console.log("After each Test")
+// })
 
-afterAll(() => {
-    console.log("After all Tests")
-})
+// afterAll(() => {
+//     console.log("After all Tests")
+// })
 
 
 test('Adding two numbers', async () => {
