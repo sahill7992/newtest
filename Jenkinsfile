@@ -5,10 +5,7 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '10'))
   }
   
-  triggers {
-    pullRequest()    
-  }
-  
+
   stages {
     stage('Checkout') {
       steps {
@@ -20,7 +17,7 @@ pipeline {
     
     stage('Run Tests') {
       steps {
-        // Run your test cases here
+              echo 'tsting'
       }
     }
     
