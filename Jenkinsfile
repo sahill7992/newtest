@@ -1,26 +1,24 @@
 pipeline {
-  agent any
-  
-  options {
-    buildDiscarder(logRotator(numToKeepStr: '10'))
-  }
-  
-
-  stages {
-    stage('Checkout') {
-      steps {
-        // Checkout the pull request branch
-        sh "git fetch origin pull/${env.CHANGE_ID}/head:pr-${env.CHANGE_ID}"
-        sh "git checkout pr-${env.CHANGE_ID}"
-      }
+    agent any
+    triggers {
+        githubPullRequest(
+            autoCloseFailedPullRequests: true,
+            branches: [[pattern: 'dev']],
+            orgScmCredentials: 'github',
+            triggerPhrase: 'test this'
+        )
     }
-    
-    stage('Run Tests') {
-      steps {
-              echo 'tsting'
-      }
-    }
-    
+    stages {
+        stage('Checkout SCM') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build and Test') {
+            steps {
+                // Add your build and test steps here
+            }
+        }
     stage('Merge Pull Request') {
       when {
         // Only run this stage if the previous stage succeeded
@@ -41,7 +39,7 @@ pipeline {
         
         // Push the changes to the remote repository
         sh 'git push origin staging'
-      }
+            }
+        }
     }
-  }
 }
