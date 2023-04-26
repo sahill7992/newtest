@@ -5,7 +5,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 # Set up the Chrome driver
-driver = webdriver.Edge()
+driver = webdriver.Chrome()
 
 #
 driver.get("https://www.helperplace.com")
